@@ -1,4 +1,3 @@
-```yaml
 name: Deploy Skills Utilization
 
 on:
@@ -25,4 +24,3 @@ jobs:
 
       - name: Check running containers
         run: docker ps
-```
