@@ -1,10 +1,10 @@
-name: Skills Utilization CI/CD
+```yaml
+name: Deploy Skills Utilization
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   deploy:
@@ -20,10 +20,9 @@ jobs:
       - name: Check Docker Compose
         run: docker compose version
 
-      - name: Build and start services
-        run: |
-          sudo docker compose up -d --build
+      - name: Deploy application
+        run: docker compose up -d --build
 
-      - name: Show running containers
-        run: |
-          sudo docker compose ps
+      - name: Check running containers
+        run: docker ps
+```
