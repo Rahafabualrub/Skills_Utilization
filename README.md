@@ -86,3 +86,4 @@ The application will start locally and be available at `http://127.0.0.1:5000`.
 2. **Skill Assessment:** The user adds their existing skills (e.g., Python, JavaScript, Figma) to their profile.
 3. **Recommendations:** The backend evaluates the user's skill set against the `skill_requirements` of all available courses, generating a "Match Score". The user is presented with the highest matching courses.
 4. **Engagement:** The user can search the full catalog, filter by domains like DevOps or Design, enroll in courses to build a schedule, and add courses to their favorites list for later viewing.# CI/CD test
+CI/CD test
