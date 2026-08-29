@@ -16,9 +16,7 @@ services:
     restart: unless-stopped
 
   backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
+    image: ghcr.io/rahafabualrub/skills_utilization-backend:latest
     container_name: skills-backend
     ports:
       - "5000:5000"
