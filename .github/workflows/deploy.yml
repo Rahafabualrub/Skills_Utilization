@@ -30,6 +30,38 @@ jobs:
           python3 -m venv .venv
           .venv/bin/python -m pip install --upgrade pip
 
+name: Skills Utilization CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Python
+        run: python3 --version
+
+      - name: Create Python virtual environment
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+
       - name: Install backend dependencies
         run: |
           .venv/bin/pip install -r backend/requirements.txt
@@ -80,14 +112,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Pull latest GHCR image
-        run: docker compose pull
+      - name: Run Vault script
+        run: bash /home/aau/Desktop/project3/vault/vault.sh
+
+      - name: Stop existing containers
+        run: docker compose down
 
       - name: Deploy application
         run: docker compose up -d
-
-      - name: Check running containers
-        run: docker ps
 
       - name: Deployment status
         run: echo "Deployment completed successfully!"
