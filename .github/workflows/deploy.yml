@@ -44,6 +44,7 @@ jobs:
       - name: Check Docker Compose
         run: docker compose version
 
+
   build-and-push:
     name: Build and Push to GHCR
     runs-on: self-hosted
@@ -71,6 +72,7 @@ jobs:
           push: true
           tags: ghcr.io/rahafabualrub/skills_utilization-backend:latest
 
+
   deploy:
     name: Deploy
     runs-on: self-hosted
@@ -81,6 +83,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Vault script
+        env:
+          VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
         run: bash /home/aau/Desktop/project3/vault/vault.sh
 
       - name: Stop existing containers
